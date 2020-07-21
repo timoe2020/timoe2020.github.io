@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"timoe2020.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第二章 PHP基本语法初识php脚本程序输出hello world(1)php可以单独使用 1&lt;?php echo&quot;hello world&quot;;?&gt;  （2）php代码可以嵌入到html中且可以嵌入到任何地方，可以嵌入多个 12345678910111213&lt;!doctype html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php-grammar">
+<meta property="og:url" content="https://timoe2020.github.io/2020/07/21/php-grammar/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第二章 PHP基本语法初识php脚本程序输出hello world(1)php可以单独使用 1&lt;?php echo&quot;hello world&quot;;?&gt;  （2）php代码可以嵌入到html中且可以嵌入到任何地方，可以嵌入多个 12345678910111213&lt;!doctype html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-21T08:05:17.000Z">
+<meta property="article:modified_time" content="2020-07-21T08:10:20.512Z">
+<meta property="article:author" content="timoe2020">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://timoe2020.github.io/2020/07/21/php-grammar/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>php-grammar | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-grammar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          php-grammar
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:05:17 / Modified: 16:10:20" itemprop="dateCreated datePublished" datetime="2020-07-21T16:05:17+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="第二章-PHP基本语法"><a href="#第二章-PHP基本语法" class="headerlink" title="第二章 PHP基本语法"></a>第二章 PHP基本语法</h1><h2 id="初识php脚本程序"><a href="#初识php脚本程序" class="headerlink" title="初识php脚本程序"></a>初识php脚本程序</h2><h4 id="输出hello-world"><a href="#输出hello-world" class="headerlink" title="输出hello world"></a>输出hello world</h4><p>(1)php可以单独使用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span><span class="string">"hello world"</span>;<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）php代码可以嵌入到html中且可以嵌入到任何地方，可以嵌入多个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot;</span><br><span class="line">          content&#x3D;&quot;width&#x3D;device-width, user-scalable&#x3D;no, initial-scale&#x3D;1.0, maximum-scale&#x3D;1.0, minimum-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;?php echo &quot;hello world&quot;;?&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（3）文件末尾的?&gt;可以省略不要</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span><span class="string">"hello world"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>（4）文末有结束标志可以不加分号</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span><span class="string">"hello world"</span><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>（1）单行注释</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//echo"hello world";</span></span><br><span class="line"><span class="comment">//echo"hello world";</span></span><br><span class="line"><span class="comment">//echo"hello world";</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>(2)多行注释</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*echo"hello world";</span></span><br><span class="line"><span class="comment">echo"hello world";</span></span><br><span class="line"><span class="comment">echo"hello world";*/</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h4><h5 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h5><p>​    echo可以将紧跟其后一个或多个字符串、表达式、变量和常量的值输出到页面中，多个数据之间用”,”分割</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'hello world'</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'result='</span>,<span class="number">4</span>+<span class="number">3</span>*<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="print"><a href="#print" class="headerlink" title="print"></a>print</h5><p>print与echo用法相同，唯一区别是print一次只能输出一个值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">'best'</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="print-r"><a href="#print-r" class="headerlink" title="print_r()"></a>print_r()</h5><p>print_r()是PHP的内置函数，它可以输出任意类型的数据，如字符串、数组等。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print_r(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="var-dump"><a href="#var-dump" class="headerlink" title="var_dump()"></a>var_dump()</h5><p>var_dump()不仅可以打印一个或多个任意类型的数据，还可以获取数据的类型和元素个数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var_dump(<span class="number">2</span>);	   <span class="comment">//result:int(2)</span></span><br><span class="line">var_dump(<span class="string">'PHP'</span>,<span class="string">'C'</span>)<span class="comment">//result:string(3)"PHP"string(1)"C"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="PHP标识符"><a href="#PHP标识符" class="headerlink" title="PHP标识符"></a>PHP标识符</h4><p>在PHP程序开发中，经常需要自定义一些符号来标记一些名称，如变量名、函数名等，需要遵循一下规则：</p>
+<p>（1）只能由字母、数字、下划线组成，不包括空格</p>
+<p>（2）只能以字母或下划线开头的任意长度的字符组成</p>
+<p>（3）用作变量名时，区分大小写</p>
+<p>（4）由多个单词组成时用下划线分割</p>
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><p>关键字是编程语言里事先定义好并赋予特殊含义的单词，也称作保留字。</p>
+<table>
+<thead>
+<tr>
+<th>PHP关键词表</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_halt_compiler()</td>
+<td>abstract</td>
+<td>and</td>
+<td>array()</td>
+<td>as</td>
+</tr>
+<tr>
+<td>break</td>
+<td>callable(php5.4)</td>
+<td>case</td>
+<td>catch</td>
+<td>class</td>
+</tr>
+<tr>
+<td>clone</td>
+<td>const</td>
+<td>continue</td>
+<td>declare</td>
+<td>default</td>
+</tr>
+<tr>
+<td>die()</td>
+<td>do</td>
+<td>echo</td>
+<td>else</td>
+<td>elseif</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>enddeclare</td>
+<td>endfor</td>
+<td>endforeach</td>
+<td>endif</td>
+</tr>
+<tr>
+<td>endswitch</td>
+<td>endwhile</td>
+<td>eval()</td>
+<td>exit()</td>
+<td>extends</td>
+</tr>
+<tr>
+<td>final</td>
+<td>finally(php5.5)</td>
+<td>for</td>
+<td>foreach</td>
+<td>function</td>
+</tr>
+<tr>
+<td>global</td>
+<td>goto(php5.3)</td>
+<td>if</td>
+<td>implements</td>
+<td>include</td>
+</tr>
+<tr>
+<td>include_once</td>
+<td>instanceof</td>
+<td>insteadof</td>
+<td>interface</td>
+<td>isset()</td>
+</tr>
+<tr>
+<td>list()</td>
+<td>namespace(5.3)</td>
+<td>new</td>
+<td>or</td>
+<td>print</td>
+</tr>
+<tr>
+<td>private</td>
+<td>protected</td>
+<td>public</td>
+<td>require</td>
+<td>require_once</td>
+</tr>
+<tr>
+<td>return</td>
+<td>static</td>
+<td>switch</td>
+<td>throw</td>
+<td>trait(php5.4)</td>
+</tr>
+<tr>
+<td>try</td>
+<td>unset()</td>
+<td>use</td>
+<td>var</td>
+<td>while</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>yield(php5.5)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="数据与运算"><a href="#数据与运算" class="headerlink" title="数据与运算"></a>数据与运算</h2><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><h5 id="变量概述"><a href="#变量概述" class="headerlink" title="变量概述"></a>变量概述</h5><p>变量是用于临时存储值(数据)的容器，在程序运行中才存在</p>
+<p>用于存储数字、文本、文本字符串、数组等</p>
+<h5 id="变量声明与赋值"><a href="#变量声明与赋值" class="headerlink" title="变量声明与赋值"></a>变量声明与赋值</h5><p>php变量使用前不需要声明，直接$变量名使用即可，用=可对变量进行赋值</p>
+<p>（2）传统赋值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$DataName=<span class="string">'DataValue'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>（2）引用赋值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$number=<span class="number">10</span>;</span><br><span class="line">$result=&amp;$number;               <span class="comment">//结果为10</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'$result='</span>,$result,<span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">$number=<span class="number">100</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'$result='</span>,$result;        <span class="comment">//结果为100</span></span><br></pre></td></tr></table></figure>
+
+<p>当$number改为100时，$result也会改为100，这是由于引用赋值的方式相当于给变量取一个别名，当一个变量的值发生变化时，另一个也随之变化</p>
+<h5 id="变量销毁"><a href="#变量销毁" class="headerlink" title="变量销毁"></a>变量销毁</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$demo=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">unset</span>($demo);</span><br></pre></td></tr></table></figure>
+
+<h5 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h5><p>可变变量的含义是指变量的名字有可以用另外一个变量来代替</p>
+<p>实现在一个变量前多加一个美元符号</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//可变变量</span></span><br><span class="line">$b = <span class="string">'name'</span>;</span><br><span class="line">$name = <span class="string">'name-php'</span>;</span><br><span class="line"><span class="keyword">echo</span> $$b;<span class="comment">//$$b =$name</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><h5 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h5><p>​    常量是在脚本运行过程中值始终不变的量。</p>
+<p>​    常量一旦定义就不能被修改或重新定义</p>
+<p>​    PHP中常量习惯用大写字母表示</p>
+<p>​    定义方法：</p>
+<p>(1)define()函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">define(<span class="string">"GREETING"</span>, <span class="string">"欢迎访问 Runoob.com"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> GREETING;</span><br><span class="line">&#125;</span><br><span class="line">myTest();    <span class="comment">// 输出 "欢迎访问 Runoob.com"</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）const关键字</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">const</span> R=<span class="number">6</span>;</span><br><span class="line"><span class="keyword">const</span> P=<span class="number">2</span>*R;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'P='</span>,P;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="预定义常量"><a href="#预定义常量" class="headerlink" title="预定义常量"></a>预定义常量</h5><p>PHP提供了很多预定义常量，这些常量专门用于获取php中的信息，并且不允许开发人员修改。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//使用PHP_OS常量获取当前操作系统</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'operating system'</span>,PHP_OS;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><h5 id="标准类型"><a href="#标准类型" class="headerlink" title="标准类型"></a>标准类型</h5><p>​        a.bool型：只有true和false两个值</p>
+<p>​        b.整型：可表示十进制、八进制、十六进制，用来表示整数。在前面            加上负号可以表示负数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $oct=<span class="number">012</span>;   <span class="comment">//八进制</span></span><br><span class="line">    $dec=<span class="number">10</span>;    <span class="comment">//十进制</span></span><br><span class="line">    $hex=<span class="number">0xa</span>;   <span class="comment">//十六进制</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>​        c.浮点型：表示小数的一种方法，有效位数为14位</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$float1=<span class="number">5.59</span>;   <span class="comment">//标准形式</span></span><br><span class="line">$float2=<span class="number">3.13E6</span>; <span class="comment">//科学计数法3.14*10^6</span></span><br><span class="line"><span class="keyword">echo</span> $float1,<span class="string">'&lt;br&gt;'</span>,$float2;</span><br></pre></td></tr></table></figure>
+
+<p>​        d.字符串型</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*用单引号表示字符串*/</span></span><br><span class="line">$number=<span class="number">100</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'$number='</span>,$number;</span><br><span class="line"><span class="keyword">echo</span><span class="string">'&lt;br&gt;'</span>;</span><br><span class="line"><span class="comment">/*heredoc和nowdoc语法结构*/</span></span><br><span class="line"><span class="comment">/*https://www.cnblogs.com/igoogleyou/p/heredoc.html</span></span><br><span class="line"><span class="comment"> * here和nowdoc的语法结构都是以&lt;&lt;&lt;开始，后面紧跟标识符的名称，结束时所引用的标识符名称与开始</span></span><br><span class="line"><span class="comment">标识符名称要相同，且必须在改行的第一列，以分号结尾。</span></span><br><span class="line"><span class="comment">heredoc和nowdoc结构的语法区别是开始标识符的名称，前者没有引号，后者必须用单引号包裹*/</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&lt;&lt;&lt;EOF</span></span><br><span class="line"><span class="string">        &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;我的第一个段落。&lt;/p&gt;</span></span><br><span class="line"><span class="string">EOF;</span></span><br><span class="line"><span class="comment">// 结束需要独立一行且前后不能空格</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="数据类型检测"><a href="#数据类型检测" class="headerlink" title="数据类型检测"></a>数据类型检测</h5><p>（1）var_dunp()</p>
+<p>（2）is_*()  符合返回true 不符合返回false</p>
+<h5 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h5><p>（1）自动类型转换</p>
+<p>（2）强制类型转换</p>
+<h4 id="运算符与优先级"><a href="#运算符与优先级" class="headerlink" title="运算符与优先级"></a>运算符与优先级</h4><h5 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h5><p>+-<em>/%*</em></p>
+<h5 id="字符窜运算符"><a href="#字符窜运算符" class="headerlink" title="字符窜运算符"></a>字符窜运算符</h5><p>.</p>
+<h5 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h5><h5 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h5><h5 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h5><h5 id="递增递减运算符"><a href="#递增递减运算符" class="headerlink" title="递增递减运算符"></a>递增递减运算符</h5><h5 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h5><h5 id="错误控制运算符"><a href="#错误控制运算符" class="headerlink" title="错误控制运算符"></a>错误控制运算符</h5><h5 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h5>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/21/php-BasicKnowledge/" rel="prev" title="php-BasicKnowledge">
+      <i class="fa fa-chevron-left"></i> php-BasicKnowledge
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/21/php-sentence/" rel="next" title="php-sentence">
+      php-sentence <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-PHP基本语法"><span class="nav-number">1.</span> <span class="nav-text">第二章 PHP基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识php脚本程序"><span class="nav-number">1.1.</span> <span class="nav-text">初识php脚本程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输出hello-world"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">输出hello world</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出语句"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">输出语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#echo"><span class="nav-number">1.1.0.3.1.</span> <span class="nav-text">echo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#print"><span class="nav-number">1.1.0.3.2.</span> <span class="nav-text">print</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#print-r"><span class="nav-number">1.1.0.3.3.</span> <span class="nav-text">print_r()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#var-dump"><span class="nav-number">1.1.0.3.4.</span> <span class="nav-text">var_dump()</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP标识符"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">PHP标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">关键字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据与运算"><span class="nav-number">1.2.</span> <span class="nav-text">数据与运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#变量概述"><span class="nav-number">1.2.0.1.1.</span> <span class="nav-text">变量概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量声明与赋值"><span class="nav-number">1.2.0.1.2.</span> <span class="nav-text">变量声明与赋值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量销毁"><span class="nav-number">1.2.0.1.3.</span> <span class="nav-text">变量销毁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可变变量"><span class="nav-number">1.2.0.1.4.</span> <span class="nav-text">可变变量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常量定义"><span class="nav-number">1.2.0.2.1.</span> <span class="nav-text">常量定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#预定义常量"><span class="nav-number">1.2.0.2.2.</span> <span class="nav-text">预定义常量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#标准类型"><span class="nav-number">1.2.0.3.1.</span> <span class="nav-text">标准类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据类型检测"><span class="nav-number">1.2.0.3.2.</span> <span class="nav-text">数据类型检测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据类型转换"><span class="nav-number">1.2.0.3.3.</span> <span class="nav-text">数据类型转换</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符与优先级"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">运算符与优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算术运算符"><span class="nav-number">1.2.0.4.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符窜运算符"><span class="nav-number">1.2.0.4.2.</span> <span class="nav-text">字符窜运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#赋值运算符"><span class="nav-number">1.2.0.4.3.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#比较运算符"><span class="nav-number">1.2.0.4.4.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">1.2.0.4.5.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#递增递减运算符"><span class="nav-number">1.2.0.4.6.</span> <span class="nav-text">递增递减运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位运算符"><span class="nav-number">1.2.0.4.7.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#错误控制运算符"><span class="nav-number">1.2.0.4.8.</span> <span class="nav-text">错误控制运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运算符优先级"><span class="nav-number">1.2.0.4.9.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">timoe2020</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timoe2020</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

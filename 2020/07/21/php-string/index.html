@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"timoe2020.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第六章 字符串处理去除空格或其他字符函数trim() 函数移除字符串两侧的空白字符或其他预定义字符。 trim(string,charlist) 去除空格实例 12345&lt;?php$str&#x3D;&#39;   abc      &#39;;var_dump($str);trim($str);var_dump($str);  去除左右两边的ab 1234&lt;?php$str&#x3D;&#39;abcabcdef&#39;;var_d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php-string">
+<meta property="og:url" content="https://timoe2020.github.io/2020/07/21/php-string/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第六章 字符串处理去除空格或其他字符函数trim() 函数移除字符串两侧的空白字符或其他预定义字符。 trim(string,charlist) 去除空格实例 12345&lt;?php$str&#x3D;&#39;   abc      &#39;;var_dump($str);trim($str);var_dump($str);  去除左右两边的ab 1234&lt;?php$str&#x3D;&#39;abcabcdef&#39;;var_d">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-21T08:08:24.000Z">
+<meta property="article:modified_time" content="2020-07-21T08:12:51.274Z">
+<meta property="article:author" content="timoe2020">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://timoe2020.github.io/2020/07/21/php-string/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>php-string | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-string/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          php-string
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:08:24 / Modified: 16:12:51" itemprop="dateCreated datePublished" datetime="2020-07-21T16:08:24+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="第六章-字符串处理"><a href="#第六章-字符串处理" class="headerlink" title="第六章 字符串处理"></a>第六章 字符串处理</h1><h2 id="去除空格或其他字符函数"><a href="#去除空格或其他字符函数" class="headerlink" title="去除空格或其他字符函数"></a>去除空格或其他字符函数</h2><p>trim() 函数移除字符串两侧的空白字符或其他预定义字符。</p>
+<p>trim(<em>string,charlist</em>)</p>
+<p>去除空格实例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str=<span class="string">'   abc      '</span>;</span><br><span class="line">var_dump($str);</span><br><span class="line">trim($str);</span><br><span class="line">var_dump($str);</span><br></pre></td></tr></table></figure>
+
+<p>去除左右两边的ab</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str=<span class="string">'abcabcdef'</span>;</span><br><span class="line">var_dump($str);</span><br><span class="line">var_dump(trim($str,<span class="string">'ab'</span>));</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.runoob.com/php/func-string-ltrim.html" target="_blank" rel="noopener">ltrim()</a> - 移除字符串左侧的空白字符或其他预定义字符。</p>
+<p><a href="https://www.runoob.com/php/func-string-rtrim.html" target="_blank" rel="noopener">rtrim()</a> - 移除字符串右侧的空白字符或其他预定义字符。</p>
+<h2 id="大小写转换函数"><a href="#大小写转换函数" class="headerlink" title="大小写转换函数"></a>大小写转换函数</h2><p>strtoupper() 函数把字符串转换为大写。</p>
+<p><a href="https://www.runoob.com/php/func-string-strtolower.html" target="_blank" rel="noopener">strtolower()</a> - 把字符串转换为小写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> strtoupper(<span class="string">"Hello WORLD!"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串查找函数"><a href="#字符串查找函数" class="headerlink" title="字符串查找函数"></a>字符串查找函数</h2><h3 id="substr-count-string-substring-start-length"><a href="#substr-count-string-substring-start-length" class="headerlink" title="substr_count(string,substring,start,length)"></a>substr_count(<em>string,substring,start,length</em>)</h3><p>substr_count() 函数计算子串在字符串中出现的次数。</p>
+<p><strong>注释：</strong>子串是区分大小写的。</p>
+<p><strong>注释：</strong>该函数不计数重叠的子串（参见实例 2） 。</p>
+<p><strong>注释：</strong>如果 start 参数加上 length 参数大于字符串长度，该函数则生成一个警告（参见实例 3）。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> substr_count(<span class="string">"Hello world. The world is nice"</span>,<span class="string">"world"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="strpos-string-find-start"><a href="#strpos-string-find-start" class="headerlink" title="strpos(string,find,start)"></a>strpos(<em>string,find,start</em>)</h3><p>strpos() f函数查找字符串在另一字符串中第一次出现的位置（区分大小写）。</p>
+<p><strong>注释：</strong>strpos() 函数是区分大小写的。</p>
+<p><strong>注释：</strong>该函数是二进制安全的。</p>
+<p>相关函数：</p>
+<ul>
+<li><a href="https://www.runoob.com/php/func-string-strrpos.html" target="_blank" rel="noopener">strrpos()</a> - 查找字符串在另一字符串中最后一次出现的位置（区分大小写）</li>
+<li><a href="https://www.runoob.com/php/func-string-stripos.html" target="_blank" rel="noopener">stripos() </a>- 查找字符串在另一字符串中第一次出现的位置（不区分大小写）</li>
+<li><a href="https://www.runoob.com/php/func-string-strripos.html" target="_blank" rel="noopener">strripos()</a> -查找字符串在另一字符串中最后一次出现的位置（不区分大小写）</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> strpos(<span class="string">"I love php, I love php too!"</span>,<span class="string">"php"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="stristr-string-search-before-search"><a href="#stristr-string-search-before-search" class="headerlink" title="stristr(string,search,before_search)"></a>stristr(<em>string,search,before_search</em>)</h3><p>stristr() 函数搜索字符串在另一字符串中的第一次出现。</p>
+<p><strong>注释：</strong>该函数是二进制安全的。</p>
+<p><strong>注释：</strong>该函数是不区分大小写的。如需进行区分大小写的搜索，请使用 <a href="https://www.runoob.com/php/func-string-strstr.html" target="_blank" rel="noopener">strstr()</a> 函数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> stristr(<span class="string">"Hello world!"</span>,<span class="number">111</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/21/php-array/" rel="prev" title="php-array">
+      <i class="fa fa-chevron-left"></i> php-array
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/21/php-expression/" rel="next" title="php-expression">
+      php-expression <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第六章-字符串处理"><span class="nav-number">1.</span> <span class="nav-text">第六章 字符串处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去除空格或其他字符函数"><span class="nav-number">1.1.</span> <span class="nav-text">去除空格或其他字符函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大小写转换函数"><span class="nav-number">1.2.</span> <span class="nav-text">大小写转换函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串查找函数"><span class="nav-number">1.3.</span> <span class="nav-text">字符串查找函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#substr-count-string-substring-start-length"><span class="nav-number">1.3.1.</span> <span class="nav-text">substr_count(string,substring,start,length)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#strpos-string-find-start"><span class="nav-number">1.3.2.</span> <span class="nav-text">strpos(string,find,start)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stristr-string-search-before-search"><span class="nav-number">1.3.3.</span> <span class="nav-text">stristr(string,search,before_search)</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">timoe2020</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timoe2020</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

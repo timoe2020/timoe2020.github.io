@@ -145,6 +145,1033 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-picture/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-picture/" class="post-title-link" itemprop="url">php-picture</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-21 16:09:56" itemprop="dateCreated datePublished" datetime="2020-07-21T16:09:56+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-time/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-time/" class="post-title-link" itemprop="url">php-time</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:09:09 / Modified: 16:13:23" itemprop="dateCreated datePublished" datetime="2020-07-21T16:09:09+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第八章-时间和日期"><a href="#第八章-时间和日期" class="headerlink" title="第八章 时间和日期"></a>第八章 时间和日期</h1><pre><code>## 设置时区</code></pre><p>默认时区是UTC</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    date_default_timezone_set(<span class="string">'Asia/Shanghai'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取当前Unix时间戳"><a href="#获取当前Unix时间戳" class="headerlink" title="获取当前Unix时间戳"></a>获取当前Unix时间戳</h2><p>​    Unix时间戳：从Unix纪元（格林威治时间1970年1月1日0时0分0秒）开始到当前的秒数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time();</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取指定时间的Unix时间戳"><a href="#获取指定时间的Unix时间戳" class="headerlink" title="获取指定时间的Unix时间戳"></a>获取指定时间的Unix时间戳</h2><p>参数都可以不写，不写的参数用当前时间代替</p>
+<p>mktime(hour,minute,seconds,month,day,year)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_default_timezone_set(<span class="string">'Asia/Shanghai'</span>);</span><br><span class="line">   <span class="keyword">echo</span> mktime(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2013</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    date_default_timezone_set(<span class="string">'Asia/Shanghai'</span>);</span><br><span class="line">    $now=time();</span><br><span class="line">   $time2=mktime(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2021</span>);</span><br><span class="line">    <span class="keyword">echo</span> ($time2-$now)/<span class="number">60</span>;</span><br></pre></td></tr></table></figure>
+
+<p>可以利用时间差做倒计时</p>
+<h2 id="从Unix时间戳取得时间日期信息"><a href="#从Unix时间戳取得时间日期信息" class="headerlink" title="从Unix时间戳取得时间日期信息"></a>从Unix时间戳取得时间日期信息</h2><p>date() 格式化一个本地时间/日期</p>
+<p>可以自定义而格式化Unix时间戳为指定时间格式</p>
+<p>第一个参数：必填，写上你所需要的时间日期的格式</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">date_default_timezone_set(<span class="string">'Asia/Shanghai'</span>);</span><br><span class="line">$now=date(<span class="string">'Y-m-d G:i:s'</span>);</span><br><span class="line"><span class="keyword">echo</span> $now;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取Unix时间戳和微秒数"><a href="#获取Unix时间戳和微秒数" class="headerlink" title="获取Unix时间戳和微秒数"></a>获取Unix时间戳和微秒数</h2><p>microtime()返回当前Unix时间戳和微秒数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">date_default_timezone_set(<span class="string">'Asia/Shanghai'</span>);</span><br><span class="line"><span class="comment">//$now=date('Y-m-d G:i:s');</span></span><br><span class="line"><span class="comment">//echo $now;</span></span><br><span class="line">$time1=microtime();</span><br><span class="line">$time2=microtime(<span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">echo</span> $time1,<span class="string">"&lt;br&gt;"</span>,$time2;</span><br></pre></td></tr></table></figure>
+
+<p>用法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">date_default_timezone_set(<span class="string">'Asia/Shanghai'</span>);</span><br><span class="line">$start=microtime(<span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">100000000</span>;$i++)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">$endTime=microtime(<span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'for is running for '</span>.round($endTime-$start,<span class="number">4</span>),<span class="string">' seconds'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-expression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-expression/" class="post-title-link" itemprop="url">php-expression</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:08:51 / Modified: 16:13:07" itemprop="dateCreated datePublished" datetime="2020-07-21T16:08:51+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第七章-正则表达式PCRE"><a href="#第七章-正则表达式PCRE" class="headerlink" title="第七章 正则表达式PCRE"></a>第七章 正则表达式PCRE</h1><h2 id="正则表达式的语法规则"><a href="#正则表达式的语法规则" class="headerlink" title="正则表达式的语法规则"></a>正则表达式的语法规则</h2><p>正则表达式描述了一类字符串的特征，通过这个特征与特定函数的结合，对其他字符串进行匹配、查找、替换以及分割的操作</p>
+<p>这类字符串的特征是由一个到多个普通字符（a-z)或元字符（+-*/）组成</p>
+<p>‘/a/’,其中/为定界符表示开始和结束</p>
+<p>preg_match_all()按指定的正则表达式，在给定的字符串进行搜索，匹配到符合特征的部分取出来</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/test/'</span>;</span><br><span class="line">$str=<span class="string">'abtestc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//有一个就输出一个数组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="定界符"><a href="#定界符" class="headerlink" title="定界符"></a>定界符</h3><p>我们一般使用正斜线“/”做为定界符也可以用#|等等，放在正则表达式的起始位置，前后一致。</p>
+<h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>比如 a-z A-Z 0-9 双引号、单引号，没有特殊含义。</p>
+<p>单双引号要用\引义</p>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p>\d代表0-9等任意一个十进制数字</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te\dst/'</span>;</span><br><span class="line">$str=<span class="string">'abte9stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>\D匹配除了0-9的任意一个十进制数字</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te\sst/'</span>;</span><br><span class="line">$str=<span class="string">'abte stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>\s匹配任意一个空白字符，如换行符，回车符，制表符，垂直制表符等</p>
+<p>使用\n的字符串外面需要用双引号</p>
+<p>\S匹配除了空白字符的其他字符</p>
+<p>\w匹配任意一个数字或者字母或下划线,\W相反</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te\wst/'</span>;</span><br><span class="line">$str=<span class="string">'abte_stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>.匹配任意一个除换行符(\n)的字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te.st/'</span>;</span><br><span class="line">$str=<span class="string">'abte_stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//arr中存放符合特征的字符数组</span></span><br></pre></td></tr></table></figure>
+
+<p>匹配点可以使用转义</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te\.st/'</span>;</span><br><span class="line">$str=<span class="string">'abte.stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>*匹配0次，一次，或者多次</p>
+<p>*前面那个字符可以出现0次，1次或者多次</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te*st/'</span>;</span><br><span class="line">$str=<span class="string">'abteeeeeestc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>+匹配一次，或者多次</p>
+<p>+前面那个字符可以出现1次或者多次</p>
+<p>?匹配0次，一次</p>
+<p>?前面那个字符可以出现0次，1次</p>
+<p>{n}表示它前面的字符恰好出现n次</p>
+<p>{n:}表示前面的字符出现不小于n次</p>
+<p>{n,m}表示前面的字符至少出现n次，至多出现m次</p>
+<p>^或\A匹配字符串开始的位置</p>
+<p>比如下面那个例子，必须要以test开头</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/^test/'</span>;</span><br><span class="line">$str=<span class="string">'testabteeeeeestc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>$或\Z匹配字符串结尾的位置</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/test$/'</span>;</span><br><span class="line">$str=<span class="string">'abteeeeeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>$与^配合使用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/^te.*st$/'</span>;</span><br><span class="line">$str=<span class="string">'testabteeeeeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>|匹配两个或多个特征</p>
+<p>下面这个例子可以匹配abc或者test</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/test|abc/'</span>;</span><br><span class="line">$str=<span class="string">'testabteeeabceeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>[]匹方括号中的任意一个字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t[tewr]st/'</span>;</span><br><span class="line">$str=<span class="string">'testabteeeabceeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>[^]匹配除了方括号外的任意一个字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t[^tewr]st/'</span>;</span><br><span class="line">$str=<span class="string">'tastabteeeabceeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>()将括号中作为一个整体以便其中内容获取到</p>
+<p>在正则表达式中 可以使用圆括号来将某一段括起来，在圆括号的后面部分，我们可以使用\数字 来代表圆括号部分所匹配到的内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t(e)st\\1/'</span>;<span class="comment">//'\\1'代表第一个圆括号匹配到的内容,相当于teste</span></span><br><span class="line">$str=<span class="string">'   teste         '</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t(.)(.)t\\1\\2/'</span>;<span class="comment">//'\\1'代表第一个圆括号匹配到的内容</span></span><br><span class="line">$str=<span class="string">'   testes         '</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="模式修正符"><a href="#模式修正符" class="headerlink" title="模式修正符"></a>模式修正符</h3><p>在定界符之后，增强正则表达式的功能</p>
+<p>i 在和模式进行匹配时不区分大小写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/test/i'</span>;<span class="comment">//'\\1'代表第一个圆括号匹配到的内容</span></span><br><span class="line">$str=<span class="string">'   test Test TEst TesT         '</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>m 多行匹配，如果目标字符中没有“\n”字符，或者模式中没有出现^或$,设置这个装饰符不产生任何影响</p>
+<p>使用条件：1.目标字符串包含\n 2.正则表达式中必须出现^或$</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/^test/m'</span>;</span><br><span class="line">$str=<span class="string">"test\ntest\ntest\ntest         "</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>ps:在windows操作系统中看到的换行包括\r \n来完成</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/^test\r*/m'</span>;</span><br><span class="line">$str=<span class="string">"test</span></span><br><span class="line"><span class="string">test</span></span><br><span class="line"><span class="string">test</span></span><br><span class="line"><span class="string">test         "</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>s:如果设定了此修正符，那么将匹配所有的字符包括换行符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t.st/s'</span>;<span class="comment">//</span></span><br><span class="line">$str=<span class="string">"t\nst"</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>U禁止贪婪匹配</p>
+<p>贪婪匹配：尽可能多的去匹配</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/a.*f/U'</span>;<span class="comment">//等价于'/a.*?f/' 不加u有2个加u只有一个</span></span><br><span class="line">$str=<span class="string">"adssf asdsdsdasdaf"</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>模式修正符可以搭配使用</p>
+<h2 id="与正则表达式匹配的函数"><a href="#与正则表达式匹配的函数" class="headerlink" title="与正则表达式匹配的函数"></a>与正则表达式匹配的函数</h2><h3 id="preg-match-all"><a href="#preg-match-all" class="headerlink" title="preg_match_all"></a>preg_match_all</h3><p>preg_match_all:找到所有符合条件的</p>
+<p>第四个参数（可选）</p>
+<p>第五个参数（可选）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t(.*?)st/'</span>;<span class="comment">//等价于'/a.*?f/' 不加u有2个加u只有一个</span></span><br><span class="line">$str=<span class="string">"   test    tewffadsdst test tareehst"</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="preg-match"><a href="#preg-match" class="headerlink" title="preg_match"></a>preg_match</h3><p>preg_match:只找一次，返回值是0或1(执行一个正则表达式匹配)</p>
+<p>参数说明（正则表达式，目标字符串，放一个变量存放匹配到的数据，0或PREG_OFFSET_CAPTURE）</p>
+<p>第四个参数默认是0，如果传了PREG_OFFSET_CAPTURE则第三个参数那个变量的数据就会有匹配到的部分偏移值</p>
+<p>还可以传第五个参数：传一个值来表示从目标字符串的哪个位置开始搜索（单位是字节）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t(.*?)st/'</span>;<span class="comment">//等价于'/a.*?f/' 不加u有2个加u只有一个</span></span><br><span class="line">$str=<span class="string">"   test    tewffadsdst test tareehst"</span>;</span><br><span class="line">var_dump(preg_match($pattern,$str,$arr,PREG_OFFSET_CAPTURE));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="preg-replace"><a href="#preg-replace" class="headerlink" title="preg_replace"></a>preg_replace</h3><p>参数说明</p>
+<p>​    第一个参数：正则表达式</p>
+<p>​    第二个参数：要替换成的字符串</p>
+<p>​    第三个参数:目标字符串</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-string/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-string/" class="post-title-link" itemprop="url">php-string</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:08:24 / Modified: 16:12:51" itemprop="dateCreated datePublished" datetime="2020-07-21T16:08:24+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第六章-字符串处理"><a href="#第六章-字符串处理" class="headerlink" title="第六章 字符串处理"></a>第六章 字符串处理</h1><h2 id="去除空格或其他字符函数"><a href="#去除空格或其他字符函数" class="headerlink" title="去除空格或其他字符函数"></a>去除空格或其他字符函数</h2><p>trim() 函数移除字符串两侧的空白字符或其他预定义字符。</p>
+<p>trim(<em>string,charlist</em>)</p>
+<p>去除空格实例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str=<span class="string">'   abc      '</span>;</span><br><span class="line">var_dump($str);</span><br><span class="line">trim($str);</span><br><span class="line">var_dump($str);</span><br></pre></td></tr></table></figure>
+
+<p>去除左右两边的ab</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$str=<span class="string">'abcabcdef'</span>;</span><br><span class="line">var_dump($str);</span><br><span class="line">var_dump(trim($str,<span class="string">'ab'</span>));</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.runoob.com/php/func-string-ltrim.html" target="_blank" rel="noopener">ltrim()</a> - 移除字符串左侧的空白字符或其他预定义字符。</p>
+<p><a href="https://www.runoob.com/php/func-string-rtrim.html" target="_blank" rel="noopener">rtrim()</a> - 移除字符串右侧的空白字符或其他预定义字符。</p>
+<h2 id="大小写转换函数"><a href="#大小写转换函数" class="headerlink" title="大小写转换函数"></a>大小写转换函数</h2><p>strtoupper() 函数把字符串转换为大写。</p>
+<p><a href="https://www.runoob.com/php/func-string-strtolower.html" target="_blank" rel="noopener">strtolower()</a> - 把字符串转换为小写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> strtoupper(<span class="string">"Hello WORLD!"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串查找函数"><a href="#字符串查找函数" class="headerlink" title="字符串查找函数"></a>字符串查找函数</h2><h3 id="substr-count-string-substring-start-length"><a href="#substr-count-string-substring-start-length" class="headerlink" title="substr_count(string,substring,start,length)"></a>substr_count(<em>string,substring,start,length</em>)</h3><p>substr_count() 函数计算子串在字符串中出现的次数。</p>
+<p><strong>注释：</strong>子串是区分大小写的。</p>
+<p><strong>注释：</strong>该函数不计数重叠的子串（参见实例 2） 。</p>
+<p><strong>注释：</strong>如果 start 参数加上 length 参数大于字符串长度，该函数则生成一个警告（参见实例 3）。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> substr_count(<span class="string">"Hello world. The world is nice"</span>,<span class="string">"world"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="strpos-string-find-start"><a href="#strpos-string-find-start" class="headerlink" title="strpos(string,find,start)"></a>strpos(<em>string,find,start</em>)</h3><p>strpos() f函数查找字符串在另一字符串中第一次出现的位置（区分大小写）。</p>
+<p><strong>注释：</strong>strpos() 函数是区分大小写的。</p>
+<p><strong>注释：</strong>该函数是二进制安全的。</p>
+<p>相关函数：</p>
+<ul>
+<li><a href="https://www.runoob.com/php/func-string-strrpos.html" target="_blank" rel="noopener">strrpos()</a> - 查找字符串在另一字符串中最后一次出现的位置（区分大小写）</li>
+<li><a href="https://www.runoob.com/php/func-string-stripos.html" target="_blank" rel="noopener">stripos() </a>- 查找字符串在另一字符串中第一次出现的位置（不区分大小写）</li>
+<li><a href="https://www.runoob.com/php/func-string-strripos.html" target="_blank" rel="noopener">strripos()</a> -查找字符串在另一字符串中最后一次出现的位置（不区分大小写）</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> strpos(<span class="string">"I love php, I love php too!"</span>,<span class="string">"php"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="stristr-string-search-before-search"><a href="#stristr-string-search-before-search" class="headerlink" title="stristr(string,search,before_search)"></a>stristr(<em>string,search,before_search</em>)</h3><p>stristr() 函数搜索字符串在另一字符串中的第一次出现。</p>
+<p><strong>注释：</strong>该函数是二进制安全的。</p>
+<p><strong>注释：</strong>该函数是不区分大小写的。如需进行区分大小写的搜索，请使用 <a href="https://www.runoob.com/php/func-string-strstr.html" target="_blank" rel="noopener">strstr()</a> 函数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> stristr(<span class="string">"Hello world!"</span>,<span class="number">111</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-array/" class="post-title-link" itemprop="url">php-array</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:08:06 / Modified: 16:12:33" itemprop="dateCreated datePublished" datetime="2020-07-21T16:08:06+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第五章-数组"><a href="#第五章-数组" class="headerlink" title="第五章 数组"></a>第五章 数组</h1><p>PHP中，数组是由一个或者多个数组元素组成的，每个数组由键(Key)和值(Value)构成</p>
+<h2 id="数组的分类"><a href="#数组的分类" class="headerlink" title="数组的分类"></a>数组的分类</h2><h3 id="索引数组"><a href="#索引数组" class="headerlink" title="索引数组"></a>索引数组</h3><p>索引数组是指键名为整数的数组。默认情况下，索引数组的键名是从0开始的，并一次递增，主要适用于利用位置(0,1,2,3……)来标识数组元素的情况，索引数组的键名也可以自己指定</p>
+<h3 id="关联数组"><a href="#关联数组" class="headerlink" title="关联数组"></a>关联数组</h3><p>关联数组是指键名为字符串的数组，通常情况下，关联数组元素的“键”和“值”有一定的业务逻辑关系。</p>
+<h2 id="数组的使用"><a href="#数组的使用" class="headerlink" title="数组的使用"></a>数组的使用</h2><h3 id="定义数组"><a href="#定义数组" class="headerlink" title="定义数组"></a>定义数组</h3><p>（1）定义索引数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$students=<span class="keyword">array</span>(</span><br><span class="line">    <span class="keyword">array</span>(<span class="number">1</span>,<span class="string">'mary'</span>,<span class="number">60.5</span>),</span><br><span class="line">    <span class="keyword">array</span>(<span class="number">2</span>,<span class="string">'John'</span>,<span class="number">80.5</span>),</span><br><span class="line">    <span class="keyword">array</span>(<span class="number">3</span>,<span class="string">'Tom'</span>,<span class="number">79.3</span>)</span><br><span class="line">);</span><br><span class="line">var_dump($students);</span><br></pre></td></tr></table></figure>
+
+<p>这是一个二维数组，在省略键名的设置时，默认从0开始，依次增加1，因此该数组的键名一次为“0，1，2”。除此之外，还可以根据实际需要定义数组元素</p>
+<p>（2）定义关联数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$info=<span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="number">10</span>,<span class="string">'name'</span>=&gt;<span class="string">'Tom'</span>,<span class="string">'tel'</span>=&gt;<span class="number">1908908980890</span>);</span><br><span class="line">var_dump($info);</span><br></pre></td></tr></table></figure>
+
+<p>（3）定义混合数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$temp=<span class="keyword">array</span>();</span><br><span class="line">$mixed=<span class="keyword">array</span>(<span class="number">2</span>,<span class="string">'str'</span>,<span class="string">'id'</span>=&gt;<span class="number">5</span>,<span class="number">5</span>=&gt;<span class="string">'b'</span>,<span class="string">'a'</span>);</span><br><span class="line">var_dump($mixed);</span><br><span class="line">var_dump($temp);</span><br></pre></td></tr></table></figure>
+
+<p>上述示例定义了一个空数组$temp和混合数组$mixed。其中，$mixed数组元素“b”制定了数字键名为“5”，则其后的“a”元素会自动将前面最大的数字键名加1后作为键名，5+1得到6</p>
+<h3 id="数组赋值"><a href="#数组赋值" class="headerlink" title="数组赋值"></a>数组赋值</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$arr[]=<span class="number">123</span>;         <span class="comment">//$arr[0]=123</span></span><br><span class="line">$arr[]=<span class="string">'hello'</span>;     <span class="comment">//$arr[1]='hello'</span></span><br><span class="line">$arr[<span class="number">4</span>]=<span class="string">'PHP'</span>;      <span class="comment">//$arr[4]='PHP'</span></span><br><span class="line">$arr[<span class="string">'name'</span>]=<span class="string">'Tom'</span>; <span class="comment">//$arr['name']='Tom'</span></span><br><span class="line">$arr[]=<span class="string">'JAVA'</span>;      <span class="comment">//$arr[5]='JAVA'</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问数组"><a href="#访问数组" class="headerlink" title="访问数组"></a>访问数组</h3><p>通过”数组名[健]”的方式来访问</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$data=<span class="keyword">array</span>(<span class="string">'goods'</span>=&gt;<span class="string">'clothes'</span>,<span class="string">'num'</span>=&gt;<span class="number">23</span>,<span class="string">'sales'</span>=&gt;<span class="number">500</span>,<span class="number">5</span>=&gt;<span class="string">'hh'</span>);</span><br><span class="line"><span class="keyword">echo</span> $data[<span class="string">'goods'</span>];</span><br><span class="line"><span class="keyword">echo</span> $data[<span class="string">'num'</span>];</span><br><span class="line"><span class="keyword">echo</span> $data[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><p>用foreach完成遍历</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$info=[<span class="string">'id'</span>=&gt;<span class="number">1</span>,<span class="string">'usr'</span>=&gt;<span class="string">'Miranda'</span>,<span class="string">'age'</span>=&gt;<span class="number">18</span>];</span><br><span class="line"><span class="keyword">foreach</span>($info <span class="keyword">as</span> $k=&gt;$v)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> $k,<span class="string">':'</span>,$v,<span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>foreach引用赋值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$info=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">foreach</span>($info <span class="keyword">as</span> $k=&gt;&amp;$v)</span><br><span class="line">&#123;</span><br><span class="line">    $v=$v+<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">print_r($info);</span><br></pre></td></tr></table></figure>
+
+<p>遍历二维数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$arr=<span class="keyword">array</span>(</span><br><span class="line">    <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>),</span><br><span class="line">    <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>),</span><br><span class="line">    <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>),</span><br><span class="line">    <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>),</span><br><span class="line">);</span><br><span class="line"><span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $value)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">foreach</span> ($value <span class="keyword">as</span> $item) &#123;</span><br><span class="line">        <span class="keyword">echo</span> $item;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数组的删除"><a href="#数组的删除" class="headerlink" title="数组的删除"></a>数组的删除</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$info=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">foreach</span>($info <span class="keyword">as</span> $k=&gt;&amp;$v)</span><br><span class="line">&#123;</span><br><span class="line">    $v=$v+<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">print_r($info);</span><br><span class="line"><span class="keyword">unset</span>($info[<span class="number">1</span>]);</span><br><span class="line">print_r($info);</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组操作符"><a href="#数组操作符" class="headerlink" title="数组操作符"></a>数组操作符</h3><h2 id="数组查找"><a href="#数组查找" class="headerlink" title="数组查找"></a>数组查找</h2><h2 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h2><h2 id="数组常用函数"><a href="#数组常用函数" class="headerlink" title="数组常用函数"></a>数组常用函数</h2><h3 id="指针操作数组"><a href="#指针操作数组" class="headerlink" title="指针操作数组"></a>指针操作数组</h3><table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>current()</td>
+<td>获取数组中当前指针指向的元素的值</td>
+</tr>
+<tr>
+<td>key()</td>
+<td>获取数组中当前指针</td>
+</tr>
+<tr>
+<td>next()</td>
+<td>将数组中的内部指针向前移动一位</td>
+</tr>
+<tr>
+<td>prev()</td>
+<td>将数组中的内部指针倒回一位</td>
+</tr>
+<tr>
+<td>each()</td>
+<td>获取数组中当前的键值对并将数组指针向前移动一步</td>
+</tr>
+<tr>
+<td>end()</td>
+<td>将数组的内部指针指向最后一个元素</td>
+</tr>
+<tr>
+<td>reset()</td>
+<td>将数组的内部指针指向第一个元素</td>
+</tr>
+</tbody></table>
+<p>（1）通过指针函数访问数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$arr=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>];</span><br><span class="line">var_dump($arr);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br&gt;获取数组中当前指针,获取数组中当前指针指向的元素的值'</span>;</span><br><span class="line"><span class="keyword">echo</span> key($arr).<span class="string">'-'</span>.current($arr);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br&gt;将数组中的内部指针向前移动一位'</span>;</span><br><span class="line"><span class="keyword">echo</span> next($arr);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br&gt;将数组的内部指针指向最后一个元素'</span>;</span><br><span class="line"><span class="keyword">echo</span> end($arr);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br&gt;将数组中的内部指针倒回一位'</span>;</span><br><span class="line"><span class="keyword">echo</span> prev($arr);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br&gt;将数组的内部指针指向第一个元素'</span>;</span><br><span class="line"><span class="keyword">echo</span> reset($arr);</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组元素操作函数"><a href="#数组元素操作函数" class="headerlink" title="数组元素操作函数"></a>数组元素操作函数</h3><p>（1）array_count_values()</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a=<span class="keyword">array</span>(<span class="string">"A"</span>,<span class="string">"Cat"</span>,<span class="string">"Dog"</span>,<span class="string">"A"</span>,<span class="string">"Dog"</span>);</span><br><span class="line">print_r(array_count_values($a));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="预定义超全局数组变量"><a href="#预定义超全局数组变量" class="headerlink" title="预定义超全局数组变量"></a>预定义超全局数组变量</h2><p>已经定义好了（存在）的变量（存放的数据类型是数组）</p>
+<p>超全局:超级全局变量，作用域（有效区域）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">var_dump($_POST);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot;</span><br><span class="line">          content&#x3D;&quot;width&#x3D;device-width, user-scalable&#x3D;no, initial-scale&#x3D;1.0, maximum-scale&#x3D;1.0, minimum-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;form method&#x3D;&quot;post&quot;&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;tom&quot;&gt;</span><br><span class="line">        &lt;button type&#x3D;&quot;submit&quot;&gt;&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-function/" class="post-title-link" itemprop="url">php-function</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:07:41 / Modified: 16:12:00" itemprop="dateCreated datePublished" datetime="2020-07-21T16:07:41+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第四章-函数"><a href="#第四章-函数" class="headerlink" title="第四章 函数"></a>第四章 函数</h1><h2 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">($a,$b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span><span class="string">"$a+$b="</span>,$a+$b;</span><br><span class="line">        <span class="keyword">return</span> $a+$b;</span><br><span class="line">    &#125;</span><br><span class="line">    add(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">echo</span><span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> add(<span class="number">2</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量范围"><a href="#变量范围" class="headerlink" title="变量范围"></a>变量范围</h2><h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>函数内定义的变量，只能在函数内使用</p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>外部变量，在函数外部定义，作用域为定义处直到本程序末尾</p>
+<p>函数中定义全局变量 global声明</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$i=<span class="number">10</span>;</span><br><span class="line">define(<span class="string">'A'</span>,<span class="string">'hahahaahah'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">global</span> $i;</span><br><span class="line">    <span class="keyword">echo</span> $i;</span><br><span class="line">    $a=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">echo</span> A;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><p>函数内部定义的使用static关键字来定义，函数执行完毕后不会消失</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> $a=<span class="number">10</span>;</span><br><span class="line">    $a++;</span><br><span class="line">    <span class="keyword">return</span> $a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> test();</span><br><span class="line"><span class="keyword">echo</span><span class="string">'&lt;br&gt;'</span>;</span><br><span class="line"><span class="keyword">echo</span> test();</span><br><span class="line"><span class="keyword">echo</span><span class="string">'&lt;br&gt;'</span>;</span><br><span class="line"><span class="keyword">echo</span> test();</span><br><span class="line"><span class="keyword">echo</span><span class="string">'&lt;br&gt;'</span>;</span><br><span class="line"><span class="keyword">echo</span> test();</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数的传递"><a href="#参数的传递" class="headerlink" title="参数的传递"></a>参数的传递</h2><h3 id="按值传参数和默认参数"><a href="#按值传参数和默认参数" class="headerlink" title="按值传参数和默认参数"></a>按值传参数和默认参数</h3><p>形参不会对实参造成影响,a可以设置默认值</p>
+<p>给形式参数加默认值的时候默认是从右往左加的，右边的值必须有才能给左边的加</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">($a,$b=<span class="number">10</span>,$c=<span class="number">30</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $a++;</span><br><span class="line">    <span class="keyword">echo</span> $a+$b+$c,<span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>);</span><br><span class="line">test(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="按引用传递参数"><a href="#按引用传递参数" class="headerlink" title="按引用传递参数"></a>按引用传递参数</h3><p>形参和实参指的是一个参数，只是名字不一样，对形参的操作会影响实参</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(&amp;$a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $a++;</span><br><span class="line">    <span class="keyword">echo</span> $a;</span><br><span class="line">&#125;</span><br><span class="line">$var=<span class="number">5</span>;</span><br><span class="line">test($var);</span><br><span class="line"><span class="keyword">echo</span> $var;</span><br></pre></td></tr></table></figure>
+
+<h3 id="可变长度参数列表"><a href="#可变长度参数列表" class="headerlink" title="可变长度参数列表"></a>可变长度参数列表</h3><h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p>自己调用自己</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">($n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>($n==<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> $n*test($n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> test(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="内部函数"><a href="#内部函数" class="headerlink" title="内部函数"></a>内部函数</h2><p>PHP有很多提供给我们的现成的函数或结构，可以在实际开发中直接使用</p>
+<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><h3 id="时间日期函数"><a href="#时间日期函数" class="headerlink" title="时间日期函数"></a>时间日期函数</h3><h3 id="PHP手册"><a href="#PHP手册" class="headerlink" title="PHP手册"></a>PHP手册</h3><p>官网-&gt;Documentation</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-sentence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-sentence/" class="post-title-link" itemprop="url">php-sentence</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:06:18 / Modified: 16:11:36" itemprop="dateCreated datePublished" datetime="2020-07-21T16:06:18+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第三章-语句"><a href="#第三章-语句" class="headerlink" title="第三章 语句"></a>第三章 语句</h1><h2 id="选择结构语句"><a href="#选择结构语句" class="headerlink" title="选择结构语句"></a>选择结构语句</h2><p>if…else switch</p>
+<h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h2><p>while do…while for</p>
+<p>跳转语句break goto continue</p>
+<h2 id="文件包含语句"><a href="#文件包含语句" class="headerlink" title="文件包含语句"></a>文件包含语句</h2><p>php中常使用include、require、include_once、require_once</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span><span class="string">'文件路径'</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-grammar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-grammar/" class="post-title-link" itemprop="url">php-grammar</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:05:17 / Modified: 16:10:20" itemprop="dateCreated datePublished" datetime="2020-07-21T16:05:17+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第二章-PHP基本语法"><a href="#第二章-PHP基本语法" class="headerlink" title="第二章 PHP基本语法"></a>第二章 PHP基本语法</h1><h2 id="初识php脚本程序"><a href="#初识php脚本程序" class="headerlink" title="初识php脚本程序"></a>初识php脚本程序</h2><h4 id="输出hello-world"><a href="#输出hello-world" class="headerlink" title="输出hello world"></a>输出hello world</h4><p>(1)php可以单独使用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span><span class="string">"hello world"</span>;<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）php代码可以嵌入到html中且可以嵌入到任何地方，可以嵌入多个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot;</span><br><span class="line">          content&#x3D;&quot;width&#x3D;device-width, user-scalable&#x3D;no, initial-scale&#x3D;1.0, maximum-scale&#x3D;1.0, minimum-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;?php echo &quot;hello world&quot;;?&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（3）文件末尾的?&gt;可以省略不要</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span><span class="string">"hello world"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>（4）文末有结束标志可以不加分号</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span><span class="string">"hello world"</span><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>（1）单行注释</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//echo"hello world";</span></span><br><span class="line"><span class="comment">//echo"hello world";</span></span><br><span class="line"><span class="comment">//echo"hello world";</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>(2)多行注释</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*echo"hello world";</span></span><br><span class="line"><span class="comment">echo"hello world";</span></span><br><span class="line"><span class="comment">echo"hello world";*/</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出语句"><a href="#输出语句" class="headerlink" title="输出语句"></a>输出语句</h4><h5 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h5><p>​    echo可以将紧跟其后一个或多个字符串、表达式、变量和常量的值输出到页面中，多个数据之间用”,”分割</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">'hello world'</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'result='</span>,<span class="number">4</span>+<span class="number">3</span>*<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="print"><a href="#print" class="headerlink" title="print"></a>print</h5><p>print与echo用法相同，唯一区别是print一次只能输出一个值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">'best'</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="print-r"><a href="#print-r" class="headerlink" title="print_r()"></a>print_r()</h5><p>print_r()是PHP的内置函数，它可以输出任意类型的数据，如字符串、数组等。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print_r(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="var-dump"><a href="#var-dump" class="headerlink" title="var_dump()"></a>var_dump()</h5><p>var_dump()不仅可以打印一个或多个任意类型的数据，还可以获取数据的类型和元素个数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var_dump(<span class="number">2</span>);	   <span class="comment">//result:int(2)</span></span><br><span class="line">var_dump(<span class="string">'PHP'</span>,<span class="string">'C'</span>)<span class="comment">//result:string(3)"PHP"string(1)"C"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="PHP标识符"><a href="#PHP标识符" class="headerlink" title="PHP标识符"></a>PHP标识符</h4><p>在PHP程序开发中，经常需要自定义一些符号来标记一些名称，如变量名、函数名等，需要遵循一下规则：</p>
+<p>（1）只能由字母、数字、下划线组成，不包括空格</p>
+<p>（2）只能以字母或下划线开头的任意长度的字符组成</p>
+<p>（3）用作变量名时，区分大小写</p>
+<p>（4）由多个单词组成时用下划线分割</p>
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><p>关键字是编程语言里事先定义好并赋予特殊含义的单词，也称作保留字。</p>
+<table>
+<thead>
+<tr>
+<th>PHP关键词表</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_halt_compiler()</td>
+<td>abstract</td>
+<td>and</td>
+<td>array()</td>
+<td>as</td>
+</tr>
+<tr>
+<td>break</td>
+<td>callable(php5.4)</td>
+<td>case</td>
+<td>catch</td>
+<td>class</td>
+</tr>
+<tr>
+<td>clone</td>
+<td>const</td>
+<td>continue</td>
+<td>declare</td>
+<td>default</td>
+</tr>
+<tr>
+<td>die()</td>
+<td>do</td>
+<td>echo</td>
+<td>else</td>
+<td>elseif</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>enddeclare</td>
+<td>endfor</td>
+<td>endforeach</td>
+<td>endif</td>
+</tr>
+<tr>
+<td>endswitch</td>
+<td>endwhile</td>
+<td>eval()</td>
+<td>exit()</td>
+<td>extends</td>
+</tr>
+<tr>
+<td>final</td>
+<td>finally(php5.5)</td>
+<td>for</td>
+<td>foreach</td>
+<td>function</td>
+</tr>
+<tr>
+<td>global</td>
+<td>goto(php5.3)</td>
+<td>if</td>
+<td>implements</td>
+<td>include</td>
+</tr>
+<tr>
+<td>include_once</td>
+<td>instanceof</td>
+<td>insteadof</td>
+<td>interface</td>
+<td>isset()</td>
+</tr>
+<tr>
+<td>list()</td>
+<td>namespace(5.3)</td>
+<td>new</td>
+<td>or</td>
+<td>print</td>
+</tr>
+<tr>
+<td>private</td>
+<td>protected</td>
+<td>public</td>
+<td>require</td>
+<td>require_once</td>
+</tr>
+<tr>
+<td>return</td>
+<td>static</td>
+<td>switch</td>
+<td>throw</td>
+<td>trait(php5.4)</td>
+</tr>
+<tr>
+<td>try</td>
+<td>unset()</td>
+<td>use</td>
+<td>var</td>
+<td>while</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>yield(php5.5)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="数据与运算"><a href="#数据与运算" class="headerlink" title="数据与运算"></a>数据与运算</h2><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><h5 id="变量概述"><a href="#变量概述" class="headerlink" title="变量概述"></a>变量概述</h5><p>变量是用于临时存储值(数据)的容器，在程序运行中才存在</p>
+<p>用于存储数字、文本、文本字符串、数组等</p>
+<h5 id="变量声明与赋值"><a href="#变量声明与赋值" class="headerlink" title="变量声明与赋值"></a>变量声明与赋值</h5><p>php变量使用前不需要声明，直接$变量名使用即可，用=可对变量进行赋值</p>
+<p>（2）传统赋值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$DataName=<span class="string">'DataValue'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>（2）引用赋值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$number=<span class="number">10</span>;</span><br><span class="line">$result=&amp;$number;               <span class="comment">//结果为10</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'$result='</span>,$result,<span class="string">'&lt;br&gt;'</span>;</span><br><span class="line">$number=<span class="number">100</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'$result='</span>,$result;        <span class="comment">//结果为100</span></span><br></pre></td></tr></table></figure>
+
+<p>当$number改为100时，$result也会改为100，这是由于引用赋值的方式相当于给变量取一个别名，当一个变量的值发生变化时，另一个也随之变化</p>
+<h5 id="变量销毁"><a href="#变量销毁" class="headerlink" title="变量销毁"></a>变量销毁</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$demo=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">unset</span>($demo);</span><br></pre></td></tr></table></figure>
+
+<h5 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h5><p>可变变量的含义是指变量的名字有可以用另外一个变量来代替</p>
+<p>实现在一个变量前多加一个美元符号</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//可变变量</span></span><br><span class="line">$b = <span class="string">'name'</span>;</span><br><span class="line">$name = <span class="string">'name-php'</span>;</span><br><span class="line"><span class="keyword">echo</span> $$b;<span class="comment">//$$b =$name</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><h5 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h5><p>​    常量是在脚本运行过程中值始终不变的量。</p>
+<p>​    常量一旦定义就不能被修改或重新定义</p>
+<p>​    PHP中常量习惯用大写字母表示</p>
+<p>​    定义方法：</p>
+<p>(1)define()函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">define(<span class="string">"GREETING"</span>, <span class="string">"欢迎访问 Runoob.com"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> GREETING;</span><br><span class="line">&#125;</span><br><span class="line">myTest();    <span class="comment">// 输出 "欢迎访问 Runoob.com"</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）const关键字</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">const</span> R=<span class="number">6</span>;</span><br><span class="line"><span class="keyword">const</span> P=<span class="number">2</span>*R;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'P='</span>,P;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="预定义常量"><a href="#预定义常量" class="headerlink" title="预定义常量"></a>预定义常量</h5><p>PHP提供了很多预定义常量，这些常量专门用于获取php中的信息，并且不允许开发人员修改。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//使用PHP_OS常量获取当前操作系统</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'operating system'</span>,PHP_OS;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><h5 id="标准类型"><a href="#标准类型" class="headerlink" title="标准类型"></a>标准类型</h5><p>​        a.bool型：只有true和false两个值</p>
+<p>​        b.整型：可表示十进制、八进制、十六进制，用来表示整数。在前面            加上负号可以表示负数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $oct=<span class="number">012</span>;   <span class="comment">//八进制</span></span><br><span class="line">    $dec=<span class="number">10</span>;    <span class="comment">//十进制</span></span><br><span class="line">    $hex=<span class="number">0xa</span>;   <span class="comment">//十六进制</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>​        c.浮点型：表示小数的一种方法，有效位数为14位</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$float1=<span class="number">5.59</span>;   <span class="comment">//标准形式</span></span><br><span class="line">$float2=<span class="number">3.13E6</span>; <span class="comment">//科学计数法3.14*10^6</span></span><br><span class="line"><span class="keyword">echo</span> $float1,<span class="string">'&lt;br&gt;'</span>,$float2;</span><br></pre></td></tr></table></figure>
+
+<p>​        d.字符串型</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/*用单引号表示字符串*/</span></span><br><span class="line">$number=<span class="number">100</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">'$number='</span>,$number;</span><br><span class="line"><span class="keyword">echo</span><span class="string">'&lt;br&gt;'</span>;</span><br><span class="line"><span class="comment">/*heredoc和nowdoc语法结构*/</span></span><br><span class="line"><span class="comment">/*https://www.cnblogs.com/igoogleyou/p/heredoc.html</span></span><br><span class="line"><span class="comment"> * here和nowdoc的语法结构都是以&lt;&lt;&lt;开始，后面紧跟标识符的名称，结束时所引用的标识符名称与开始</span></span><br><span class="line"><span class="comment">标识符名称要相同，且必须在改行的第一列，以分号结尾。</span></span><br><span class="line"><span class="comment">heredoc和nowdoc结构的语法区别是开始标识符的名称，前者没有引号，后者必须用单引号包裹*/</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&lt;&lt;&lt;EOF</span></span><br><span class="line"><span class="string">        &lt;h1&gt;我的第一个标题&lt;/h1&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;我的第一个段落。&lt;/p&gt;</span></span><br><span class="line"><span class="string">EOF;</span></span><br><span class="line"><span class="comment">// 结束需要独立一行且前后不能空格</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="数据类型检测"><a href="#数据类型检测" class="headerlink" title="数据类型检测"></a>数据类型检测</h5><p>（1）var_dunp()</p>
+<p>（2）is_*()  符合返回true 不符合返回false</p>
+<h5 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h5><p>（1）自动类型转换</p>
+<p>（2）强制类型转换</p>
+<h4 id="运算符与优先级"><a href="#运算符与优先级" class="headerlink" title="运算符与优先级"></a>运算符与优先级</h4><h5 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h5><p>+-<em>/%*</em></p>
+<h5 id="字符窜运算符"><a href="#字符窜运算符" class="headerlink" title="字符窜运算符"></a>字符窜运算符</h5><p>.</p>
+<h5 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h5><h5 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h5><h5 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h5><h5 id="递增递减运算符"><a href="#递增递减运算符" class="headerlink" title="递增递减运算符"></a>递增递减运算符</h5><h5 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h5><h5 id="错误控制运算符"><a href="#错误控制运算符" class="headerlink" title="错误控制运算符"></a>错误控制运算符</h5><h5 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h5>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-BasicKnowledge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/21/php-BasicKnowledge/" class="post-title-link" itemprop="url">php-BasicKnowledge</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:00:45 / Modified: 16:03:53" itemprop="dateCreated datePublished" datetime="2020-07-21T16:00:45+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第一章-PHP基础知识"><a href="#第一章-PHP基础知识" class="headerlink" title="第一章 PHP基础知识"></a>第一章 PHP基础知识</h1><h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><p>由很多相互链接的超文本文件组成的系统。这个系统中，每个有用的文件都称为“资源”，而且由一个“通用资源标识符”(URI)进行定位，这些资源通过超文本传输协议(HTTP)传递给用户，用户单击链接即可获得资源。</p>
+<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><ul>
+<li><p>C/S架构：Client/Server架构是指用户端/服务器端的交互，客户端时专门开发出来的，用户必须安装才能使用</p>
+</li>
+<li><p>B/S架构:Browser/Server架构是指浏览器/服务器端的交互，用户只需要一个浏览器就能访问各种网站的服务</p>
+</li>
+</ul>
+<h3 id="URL地址"><a href="#URL地址" class="headerlink" title="URL地址"></a>URL地址</h3><p>URL地址：用于标识网页文件位置的访问标识符成为统一资源定位符(Uniform Resource Locator,URL)</p>
+<p>如：<a href="http://www.itheima.com:80/index.html" target="_blank" rel="noopener">http://www.itheima.com:80/index.html</a></p>
+<p>http:传输数据所使用的协议</p>
+<p><a href="http://www.itheima.com" target="_blank" rel="noopener">www.itheima.com</a>： 要请求的服务器主机名</p>
+<p>index.html:要请求的资源名称</p>
+<p>80：web服务器的默认端口号,可省略</p>
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>HTTP协议：浏览器和web服务器之间的数据交互要遵循的一些规范，HTTP就是其中的一种规范</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/17/post-website-in-github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -202,288 +1229,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/16/introduction/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="timoe2020">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/16/introduction/" class="post-title-link" itemprop="url">introduction</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-16 09:29:02 / Modified: 09:30:04" itemprop="dateCreated datePublished" datetime="2020-07-16T09:29:02+08:00">2020-07-16</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>这是一篇介绍</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/15/MarkdownNote/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="timoe2020">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/15/MarkdownNote/" class="post-title-link" itemprop="url">Note</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-15 23:41:58 / Modified: 23:44:44" itemprop="dateCreated datePublished" datetime="2020-07-15T23:41:58+08:00">2020-07-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>方式一：使用=标记一级标题，使用-标记二级标题</p>
-<p>代码如下：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">我展示的是一级标题</span><br><span class="line">===============</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">我展示的是二级标题</span><br><span class="line">---------------</span><br></pre></td></tr></table></figure>
-
-<p>方式二：使用#标记</p>
-<p>代码如下：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br><span class="line"><span class="section">#### 四级标题</span></span><br><span class="line"><span class="section">##### 五级标题</span></span><br><span class="line"><span class="section">###### 六级标题</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><p>Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车，也可以使用空行来换行</p>
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>不同字体设置代码如下:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*斜体文本*</span></span><br><span class="line"><span class="emphasis">_斜体文本_</span></span><br><span class="line"><span class="strong">**粗体文本**</span></span><br><span class="line"><span class="strong">__粗体文本__</span></span><br><span class="line"><span class="strong">***粗斜体文本**</span>*</span><br><span class="line"><span class="strong">___粗斜体文本__</span>_</span><br></pre></td></tr></table></figure>
-
-<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">***</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">* </span><span class="emphasis">* *</span></span><br><span class="line"></span><br><span class="line"><span class="strong">*****</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>- -</span><br><span class="line"></span><br><span class="line">----------</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>如果段落上的文字要添加删除线，只需要在文字的两端加上两个波浪线 <strong>~~</strong> 即可，代码如下：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~BAIDU.COM~~</span><br></pre></td></tr></table></figure>
-
-<h2 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h2><p>下划线可以通过 HTML 的 <strong><u></strong> 标签来实现：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">u</span>&gt;</span></span>带下划线文本<span class="xml"><span class="tag">&lt;/<span class="name">u</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h2><p>脚注是对文本的补充说明。</p>
-<p>Markdown 脚注的格式如下:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[^要注明的文本]</span><br></pre></td></tr></table></figure>
-
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>Markdown 支持有序列表和无序列表。</p>
-<p>无序列表使用星号(<strong>***)、加号(</strong>+<strong>)或是减号(</strong>-**)作为列表标记，这些标记后面要添加一个空格，然后再填写内容：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>第一项</span><br><span class="line"><span class="bullet">* </span>第二项</span><br><span class="line"><span class="bullet">* </span>第三项</span><br><span class="line"></span><br><span class="line"><span class="bullet">+ </span>第一项</span><br><span class="line"><span class="bullet">+ </span>第二项</span><br><span class="line"><span class="bullet">+ </span>第三项</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="bullet">- </span>第一项</span><br><span class="line"><span class="bullet">- </span>第二项</span><br><span class="line"><span class="bullet">- </span>第三项</span><br></pre></td></tr></table></figure>
-
-<p>有序列表使用数字并加上 <strong>.</strong> 号来表示，如：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1. </span>第一项</span><br><span class="line"><span class="bullet">2. </span>第二项</span><br><span class="line"><span class="bullet">3. </span>第三项</span><br></pre></td></tr></table></figure>
-
-<p>列表嵌套</p>
-<p>列表嵌套只需在子列表中的选项前面添加四个空格即可：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1. </span>第一项：</span><br><span class="line"><span class="bullet">    - </span>第一项嵌套的第一个元素</span><br><span class="line"><span class="bullet">    - </span>第一项嵌套的第二个元素</span><br><span class="line"><span class="bullet">2. </span>第二项：</span><br><span class="line"><span class="bullet">    - </span>第二项嵌套的第一个元素</span><br><span class="line"><span class="bullet">    - </span>第二项嵌套的第二个元素</span><br></pre></td></tr></table></figure>
-
-<h2 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h2><p>Markdown 区块引用是在段落开头使用 <strong>&gt;</strong> 符号 ，然后后面紧跟一个<strong>空格</strong>符号：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 区块引用</span></span><br><span class="line"><span class="quote">&gt; 菜鸟教程</span></span><br><span class="line"><span class="quote">&gt; 学的不仅是技术更是梦想</span></span><br></pre></td></tr></table></figure>
-
-<p>另外区块是可以嵌套的，一个 <strong>&gt;</strong> 符号是最外层，两个 <strong>&gt;</strong> 符号是第一层嵌套，以此类推：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 最外层</span></span><br><span class="line"><span class="quote">&gt; &gt; 第一层嵌套</span></span><br><span class="line"><span class="quote">&gt; &gt; &gt; 第二层嵌套</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## 链接</span><br><span class="line"></span><br><span class="line">方法如下：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;markdown</span><br><span class="line">这是一个链接 [菜鸟教程](https:&#x2F;&#x2F;www.runoob.com)</span><br><span class="line">或者</span><br><span class="line">&lt;https:&#x2F;&#x2F;www.runoob.com&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这是一个链接 <a href="https://www.runoob.com" target="_blank" rel="noopener">菜鸟教程</a></p>
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">alt 属性文本</span>](<span class="link">图片地址</span>)</span><br><span class="line"></span><br><span class="line">![<span class="string">alt 属性文本</span>](<span class="link">图片地址 "可选标题"</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>开头一个感叹号 !</p>
-</li>
-<li><p>接着一个方括号，里面放上图片的替代文字</p>
-</li>
-<li><p>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 ‘title’ 属性的文字。</p>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>Markdown 制作表格使用 <strong>|</strong> 来分隔不同的单元格，使用 <strong>-</strong> 来分隔表头和其他行。</p>
-<p>语法格式如下：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>——–</td>
-<td>——-</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody></table>
-<p><strong>我们可以设置表格的对齐方式：</strong></p>
-<ul>
-<li><p><strong>-:</strong> 设置内容和标题栏居右对齐。</p>
-</li>
-<li><p><strong>:-</strong> 设置内容和标题栏居左对齐。</p>
-</li>
-<li><p><strong>:-:</strong> 设置内容和标题栏居中对齐。</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/15/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="timoe2020">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/15/hello-world/" class="post-title-link" itemprop="url">Blog</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-07-15 18:30:24 / Modified: 20:35:08" itemprop="dateCreated datePublished" datetime="2020-07-15T18:30:24+08:00">2020-07-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
 
 
 
@@ -548,7 +1298,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

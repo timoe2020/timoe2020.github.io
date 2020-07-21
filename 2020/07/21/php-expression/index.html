@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"timoe2020.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第七章 正则表达式PCRE正则表达式的语法规则正则表达式描述了一类字符串的特征，通过这个特征与特定函数的结合，对其他字符串进行匹配、查找、替换以及分割的操作 这类字符串的特征是由一个到多个普通字符（a-z)或元字符（+-*&#x2F;）组成 ‘&#x2F;a&#x2F;’,其中&#x2F;为定界符表示开始和结束 preg_match_all()按指定的正则表达式，在给定的字符串进行搜索，匹配到符合特征的部分取出来 12345&lt;?p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php-expression">
+<meta property="og:url" content="https://timoe2020.github.io/2020/07/21/php-expression/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第七章 正则表达式PCRE正则表达式的语法规则正则表达式描述了一类字符串的特征，通过这个特征与特定函数的结合，对其他字符串进行匹配、查找、替换以及分割的操作 这类字符串的特征是由一个到多个普通字符（a-z)或元字符（+-*&#x2F;）组成 ‘&#x2F;a&#x2F;’,其中&#x2F;为定界符表示开始和结束 preg_match_all()按指定的正则表达式，在给定的字符串进行搜索，匹配到符合特征的部分取出来 12345&lt;?p">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-21T08:08:51.000Z">
+<meta property="article:modified_time" content="2020-07-21T08:13:07.849Z">
+<meta property="article:author" content="timoe2020">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://timoe2020.github.io/2020/07/21/php-expression/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>php-expression | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timoe2020.github.io/2020/07/21/php-expression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="timoe2020">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          php-expression
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-21 16:08:51 / Modified: 16:13:07" itemprop="dateCreated datePublished" datetime="2020-07-21T16:08:51+08:00">2020-07-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="第七章-正则表达式PCRE"><a href="#第七章-正则表达式PCRE" class="headerlink" title="第七章 正则表达式PCRE"></a>第七章 正则表达式PCRE</h1><h2 id="正则表达式的语法规则"><a href="#正则表达式的语法规则" class="headerlink" title="正则表达式的语法规则"></a>正则表达式的语法规则</h2><p>正则表达式描述了一类字符串的特征，通过这个特征与特定函数的结合，对其他字符串进行匹配、查找、替换以及分割的操作</p>
+<p>这类字符串的特征是由一个到多个普通字符（a-z)或元字符（+-*/）组成</p>
+<p>‘/a/’,其中/为定界符表示开始和结束</p>
+<p>preg_match_all()按指定的正则表达式，在给定的字符串进行搜索，匹配到符合特征的部分取出来</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/test/'</span>;</span><br><span class="line">$str=<span class="string">'abtestc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//有一个就输出一个数组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="定界符"><a href="#定界符" class="headerlink" title="定界符"></a>定界符</h3><p>我们一般使用正斜线“/”做为定界符也可以用#|等等，放在正则表达式的起始位置，前后一致。</p>
+<h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>比如 a-z A-Z 0-9 双引号、单引号，没有特殊含义。</p>
+<p>单双引号要用\引义</p>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p>\d代表0-9等任意一个十进制数字</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te\dst/'</span>;</span><br><span class="line">$str=<span class="string">'abte9stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>\D匹配除了0-9的任意一个十进制数字</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te\sst/'</span>;</span><br><span class="line">$str=<span class="string">'abte stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>\s匹配任意一个空白字符，如换行符，回车符，制表符，垂直制表符等</p>
+<p>使用\n的字符串外面需要用双引号</p>
+<p>\S匹配除了空白字符的其他字符</p>
+<p>\w匹配任意一个数字或者字母或下划线,\W相反</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te\wst/'</span>;</span><br><span class="line">$str=<span class="string">'abte_stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>.匹配任意一个除换行符(\n)的字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te.st/'</span>;</span><br><span class="line">$str=<span class="string">'abte_stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//arr中存放符合特征的字符数组</span></span><br></pre></td></tr></table></figure>
+
+<p>匹配点可以使用转义</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te\.st/'</span>;</span><br><span class="line">$str=<span class="string">'abte.stc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>*匹配0次，一次，或者多次</p>
+<p>*前面那个字符可以出现0次，1次或者多次</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/te*st/'</span>;</span><br><span class="line">$str=<span class="string">'abteeeeeestc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);</span><br></pre></td></tr></table></figure>
+
+<p>+匹配一次，或者多次</p>
+<p>+前面那个字符可以出现1次或者多次</p>
+<p>?匹配0次，一次</p>
+<p>?前面那个字符可以出现0次，1次</p>
+<p>{n}表示它前面的字符恰好出现n次</p>
+<p>{n:}表示前面的字符出现不小于n次</p>
+<p>{n,m}表示前面的字符至少出现n次，至多出现m次</p>
+<p>^或\A匹配字符串开始的位置</p>
+<p>比如下面那个例子，必须要以test开头</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/^test/'</span>;</span><br><span class="line">$str=<span class="string">'testabteeeeeestc'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>$或\Z匹配字符串结尾的位置</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/test$/'</span>;</span><br><span class="line">$str=<span class="string">'abteeeeeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>$与^配合使用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/^te.*st$/'</span>;</span><br><span class="line">$str=<span class="string">'testabteeeeeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>|匹配两个或多个特征</p>
+<p>下面这个例子可以匹配abc或者test</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/test|abc/'</span>;</span><br><span class="line">$str=<span class="string">'testabteeeabceeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>[]匹方括号中的任意一个字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t[tewr]st/'</span>;</span><br><span class="line">$str=<span class="string">'testabteeeabceeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>[^]匹配除了方括号外的任意一个字符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t[^tewr]st/'</span>;</span><br><span class="line">$str=<span class="string">'tastabteeeabceeestctest'</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>()将括号中作为一个整体以便其中内容获取到</p>
+<p>在正则表达式中 可以使用圆括号来将某一段括起来，在圆括号的后面部分，我们可以使用\数字 来代表圆括号部分所匹配到的内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t(e)st\\1/'</span>;<span class="comment">//'\\1'代表第一个圆括号匹配到的内容,相当于teste</span></span><br><span class="line">$str=<span class="string">'   teste         '</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t(.)(.)t\\1\\2/'</span>;<span class="comment">//'\\1'代表第一个圆括号匹配到的内容</span></span><br><span class="line">$str=<span class="string">'   testes         '</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="模式修正符"><a href="#模式修正符" class="headerlink" title="模式修正符"></a>模式修正符</h3><p>在定界符之后，增强正则表达式的功能</p>
+<p>i 在和模式进行匹配时不区分大小写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/test/i'</span>;<span class="comment">//'\\1'代表第一个圆括号匹配到的内容</span></span><br><span class="line">$str=<span class="string">'   test Test TEst TesT         '</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>m 多行匹配，如果目标字符中没有“\n”字符，或者模式中没有出现^或$,设置这个装饰符不产生任何影响</p>
+<p>使用条件：1.目标字符串包含\n 2.正则表达式中必须出现^或$</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/^test/m'</span>;</span><br><span class="line">$str=<span class="string">"test\ntest\ntest\ntest         "</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>ps:在windows操作系统中看到的换行包括\r \n来完成</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/^test\r*/m'</span>;</span><br><span class="line">$str=<span class="string">"test</span></span><br><span class="line"><span class="string">test</span></span><br><span class="line"><span class="string">test</span></span><br><span class="line"><span class="string">test         "</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>s:如果设定了此修正符，那么将匹配所有的字符包括换行符</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t.st/s'</span>;<span class="comment">//</span></span><br><span class="line">$str=<span class="string">"t\nst"</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>U禁止贪婪匹配</p>
+<p>贪婪匹配：尽可能多的去匹配</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/a.*f/U'</span>;<span class="comment">//等价于'/a.*?f/' 不加u有2个加u只有一个</span></span><br><span class="line">$str=<span class="string">"adssf asdsdsdasdaf"</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<p>模式修正符可以搭配使用</p>
+<h2 id="与正则表达式匹配的函数"><a href="#与正则表达式匹配的函数" class="headerlink" title="与正则表达式匹配的函数"></a>与正则表达式匹配的函数</h2><h3 id="preg-match-all"><a href="#preg-match-all" class="headerlink" title="preg_match_all"></a>preg_match_all</h3><p>preg_match_all:找到所有符合条件的</p>
+<p>第四个参数（可选）</p>
+<p>第五个参数（可选）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t(.*?)st/'</span>;<span class="comment">//等价于'/a.*?f/' 不加u有2个加u只有一个</span></span><br><span class="line">$str=<span class="string">"   test    tewffadsdst test tareehst"</span>;</span><br><span class="line">var_dump(preg_match_all($pattern,$str,$arr));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="preg-match"><a href="#preg-match" class="headerlink" title="preg_match"></a>preg_match</h3><p>preg_match:只找一次，返回值是0或1(执行一个正则表达式匹配)</p>
+<p>参数说明（正则表达式，目标字符串，放一个变量存放匹配到的数据，0或PREG_OFFSET_CAPTURE）</p>
+<p>第四个参数默认是0，如果传了PREG_OFFSET_CAPTURE则第三个参数那个变量的数据就会有匹配到的部分偏移值</p>
+<p>还可以传第五个参数：传一个值来表示从目标字符串的哪个位置开始搜索（单位是字节）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$pattern=<span class="string">'/t(.*?)st/'</span>;<span class="comment">//等价于'/a.*?f/' 不加u有2个加u只有一个</span></span><br><span class="line">$str=<span class="string">"   test    tewffadsdst test tareehst"</span>;</span><br><span class="line">var_dump(preg_match($pattern,$str,$arr,PREG_OFFSET_CAPTURE));<span class="comment">//在str中找pattern，返回值为有几个</span></span><br><span class="line">var_dump($arr);<span class="comment">//放置匹配到的元素用数组储存</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="preg-replace"><a href="#preg-replace" class="headerlink" title="preg_replace"></a>preg_replace</h3><p>参数说明</p>
+<p>​    第一个参数：正则表达式</p>
+<p>​    第二个参数：要替换成的字符串</p>
+<p>​    第三个参数:目标字符串</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/21/php-string/" rel="prev" title="php-string">
+      <i class="fa fa-chevron-left"></i> php-string
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/21/php-time/" rel="next" title="php-time">
+      php-time <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第七章-正则表达式PCRE"><span class="nav-number">1.</span> <span class="nav-text">第七章 正则表达式PCRE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式的语法规则"><span class="nav-number">1.1.</span> <span class="nav-text">正则表达式的语法规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定界符"><span class="nav-number">1.1.1.</span> <span class="nav-text">定界符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通字符"><span class="nav-number">1.1.2.</span> <span class="nav-text">普通字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符"><span class="nav-number">1.1.3.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式修正符"><span class="nav-number">1.1.4.</span> <span class="nav-text">模式修正符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与正则表达式匹配的函数"><span class="nav-number">1.2.</span> <span class="nav-text">与正则表达式匹配的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#preg-match-all"><span class="nav-number">1.2.1.</span> <span class="nav-text">preg_match_all</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preg-match"><span class="nav-number">1.2.2.</span> <span class="nav-text">preg_match</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preg-replace"><span class="nav-number">1.2.3.</span> <span class="nav-text">preg_replace</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">timoe2020</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timoe2020</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
